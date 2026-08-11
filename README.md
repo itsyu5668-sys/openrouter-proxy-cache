@@ -46,15 +46,29 @@ Send the same prompt twice and watch the second response come back instantly wit
   (assumes $3 / 1M tokens) of every incoming prompt.
 - Checks an in-memory exact-match cache (keyed on full message list + model).
 - **Cache hit** → returns cached response, logs the amount saved.
-- **Cache miss** → forwards to OpenRouter using `OPENROUTER_API_KEY`, stores the
-  response, and returns it.
+- **Cache miss** → forwards to the upstream provider, stores the response, and
+  returns it.
 - `GET /health` — liveness + cache size.
+
+## Upstream provider
+
+The proxy is provider-agnostic and defaults to **Groq** (free tier, OpenAI-compatible).
+Set `UPSTREAM_PROVIDER` to switch:
+
+| Provider | Env var with the key | Default model |
+|---|---|---|
+| `groq` (default) | `GROQ_API_KEY` | `llama-3.1-8b-instant` |
+| `openrouter` | `OPENROUTER_API_KEY` | `openai/gpt-4o-mini` |
+
+Because Groq and OpenRouter both speak the OpenAI API, the request/response body
+is passed through unchanged — your client code doesn't care which is behind it.
 
 ## Run locally
 
 ```bash
 pip install -r requirements.txt
-export OPENROUTER_API_KEY=sk-or-...
+export UPSTREAM_PROVIDER=groq
+export GROQ_API_KEY=gsk-...
 uvicorn main:app --host 0.0.0.0 --port 10000
 ```
 

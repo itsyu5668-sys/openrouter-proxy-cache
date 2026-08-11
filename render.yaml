@@ -5,5 +5,9 @@ services:
     buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
+      - key: UPSTREAM_PROVIDER
+        value: "groq"
+      - key: GROQ_API_KEY
+        value: "YOUR_GROQ_KEY_HERE"             # User will replace this in Render dashboard
       - key: OPENROUTER_API_KEY
-        value: "YOUR_OPENROUTER_KEY_HERE"   # User will replace this in Render dashboard
+        value: "YOUR_OPENROUTER_KEY_HERE"   # Optional: only used if UPSTREAM_PROVIDER=openrouter
