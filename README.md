@@ -108,10 +108,8 @@ before you rely on this for anything important.
 If any of those are a problem for you, see the managed version below.
 
 ## Managed version (paid)
-
-The open-source repo is for self-hosting. If you outgrow running it on your own
-machine, there is a managed version for teams:
-
+  coming soon……
+  
 - High-uptime hosted deployment instead of a laptop process.
 - Persistent cache that survives restarts, so savings compound over time.
 - Semantic caching that catches near-duplicate prompts, not just exact matches.
@@ -119,9 +117,6 @@ machine, there is a managed version for teams:
 - Per-user API keys and multi-tenant isolation.
 - 99.99% uptime target.
 
-Pricing is a share of the savings it generates for you, so you only pay when
-it actually cuts your bill. If you want to try the managed version, open an
-issue on this repo or reach out and I will set you up with a private endpoint.
 
 ## License
 
