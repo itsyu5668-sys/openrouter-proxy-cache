@@ -20,7 +20,7 @@
 
 4. **Choose "Use render.yaml".** Render will detect `render.yaml` and auto-fill the
    runtime, build command (`pip install -r requirements.txt`), and start command
-   (`uvicorn main:app --host 0.0.0.0 --port 10000`). Don't change these.
+   (`uvicorn main:app --host 0.0.0.0 --port $PORT`). Don't change these.
 
 5. **Set `OPENROUTER_API_KEY` → Deploy.** In the Environment section, set
    `OPENROUTER_API_KEY` to your real OpenRouter key (get one at
