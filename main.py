@@ -1,7 +1,8 @@
-"""OpenRouter Proxy Cache - free hosted version.
+"""openvault - open-source prompt-caching proxy.
 
 Caches exact-match prompts to cut AI costs. Forwards misses to a configurable
 upstream provider (Groq by default, OpenRouter when you add credits).
+Self-host it for free, or use the managed version for teams.
 """
 import os
 import json
@@ -32,7 +33,7 @@ OPENROUTER_DEFAULT_MODEL = "openai/gpt-4o-mini"
 # Retail pricing assumption for cost logging: $3 per 1M tokens.
 COST_PER_1M_TOKENS = 3.0
 
-app = FastAPI(title="OpenRouter Proxy Cache")
+app = FastAPI(title="openvault")
 
 # In-memory exact-match cache: prompt_hash -> response payload.
 cache: dict[str, dict[str, Any]] = {}
@@ -63,7 +64,7 @@ def cache_key(messages: list[dict[str, Any]], model: str) -> str:
 
 @app.get("/")
 def root():
-    return {"status": "ok", "service": "openrouter-proxy-cache", "provider": UPSTREAM_PROVIDER}
+    return {"status": "ok", "service": "openvault", "provider": UPSTREAM_PROVIDER}
 
 
 @app.get("/health")
